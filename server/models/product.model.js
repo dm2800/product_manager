@@ -19,6 +19,11 @@ const ProductSchema = new mongoose.Schema({
         type: String, 
         required: [true, "Description required."],
         minlength: [3, "Description must be at least 3 characters."]
+    },
+
+    image: {
+        type: String,
+        required: [true, "because we love pictures"]
     }
 }, {timestamps: true})
 

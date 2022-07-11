@@ -10,6 +10,7 @@ const NewProduct = (props) => {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
 
     const navigate = useNavigate();
 
@@ -19,7 +20,8 @@ const NewProduct = (props) => {
         {
             title,
             price,
-            description
+            description,
+            image
         })
             .then((res)=>{
                 console.log(res);
@@ -49,6 +51,10 @@ const NewProduct = (props) => {
                 <div>
                     <label>Description</label>
                     <input value = {description} onChange = {(e)=> setDescription(e.target.value)} type = "text"></input>
+                </div>
+                <div>
+                    <label>Image</label>
+                    <input value = {image} onChange = {(e)=> setImage(e.target.value)} type = "text"></input>
                 </div>
                 <button>Add Product</button>
             </form>

@@ -8,9 +8,30 @@ import {Link, useParams} from "react-router-dom"
 const OneProduct = (props) => {
 
 
+    const [product, setProduct] = useState({});
+
+    const{id} = useParams();
+    useEffect(()=> {
+        axios.get(`http://localhost:8000/api/products/${id}`)
+            .then((res)=>{
+                console.log(res);
+                console.log(res.data);
+                setProduct(res.data)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }, [id])
+
     return(
         <div>
-            One Product
+            <header>
+            <h1>{product.title}</h1>
+            <Link to={"/new"}>Add New Product</Link>
+            </header>
+            <p>{product.price}</p>
+            <p>{product.description}</p>
+            <img src = {product.image}></img>
         </div>
     )
 }

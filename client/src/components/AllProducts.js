@@ -8,8 +8,9 @@ import {Link} from "react-router-dom"
 const AllProducts = (props) => {
 
     const [productList, setProductList] = useState([]);
+
     
-    useEffect(()=> (props)=> {
+    useEffect(()=> {
         axios.get("http://localhost:8000/api/products")
         .then((res)=> {
             console.log(res);
@@ -27,9 +28,11 @@ const AllProducts = (props) => {
             {
                 productList.map((product, index)=> (
                     <div>
-                        <p>{product.title}</p>
+                        <Link to = {`/products/${product._id}`}>{product.title}</Link>
                         <p>{product.price}</p>
                         <p>{product.description}</p>
+                        <img src = {product.image}
+                        />
                     </div>
 
                 ))
