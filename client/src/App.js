@@ -4,6 +4,7 @@ import axios from "axios";
 import AllProducts from './components/AllProducts';
 import NewProduct from './components/NewProduct';
 import OneProduct from './components/OneProduct';
+import EditProduct from "./components/EditProduct";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 
@@ -16,6 +17,7 @@ function App() {
           <Route element = {<AllProducts/>} path="/" />
           <Route element = {<NewProduct/>} path="/new" />
           <Route element = {<OneProduct/>} path="/products/:id" />
+          <Route element = {<EditProduct/>} path="/products/edit/:id" />
         </Routes>
     
       </div>

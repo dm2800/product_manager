@@ -19,11 +19,25 @@ const AllProducts = (props) => {
         })
         .catch((err)=> console.log(err))
     }, [])
+
+    const deleteProduct = (idFromBelow)=> {
+        //react we must handle the front end 
+        axios.delete(`http://localhost:8000/api/products/${idFromBelow}`)
+            .then((res)=>{
+                console.log(res);
+                console.log(res.data);
+                setProductList(productList.filter((product, index)=> product._id !== idFromBelow))
+            })
+            .catch((err)=> console.log(err));
+    }
+
     return(
         <div>
             <header>
-            <h1>Product Mania</h1>
-            <Link to={"/new"}>Add New Product</Link>
+            <h1>Products</h1>
+            <Link to={"/new"}
+            style = {{color: "blue"}}
+            >Add New Product</Link>
             </header>
             {
                 productList.map((product, index)=> (
@@ -33,6 +47,8 @@ const AllProducts = (props) => {
                         <p>{product.description}</p>
                         <img src = {product.image}
                         />
+                        <Link to= {`/products/edit/${product._id}`}>Edit</Link>
+                        <button onClick={()=> deleteProduct(product._id)}>Delete</button>
                     </div>
 
                 ))

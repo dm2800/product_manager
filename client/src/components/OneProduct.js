@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Link, useParams} from "react-router-dom"
+import {Link, useNavigate, useParams} from "react-router-dom"
 
 
-//axios, useEffect, useState, Link
+
 
 const OneProduct = (props) => {
-
 
     const [product, setProduct] = useState({});
 
     const{id} = useParams();
+
+    const navigate = useNavigate();
+
+
+
     useEffect(()=> {
         axios.get(`http://localhost:8000/api/products/${id}`)
             .then((res)=>{
@@ -23,6 +27,16 @@ const OneProduct = (props) => {
             })
     }, [id])
 
+    const deleteProduct = ()=> {
+        axios.delete(`http://localhost:8000/api/products/${id}`)
+            .then((res)=>{
+                console.log(res);
+                console.log(res.data);
+                navigate("/");
+            })
+            .catch((err)=> console.log(err))
+    }
+
     return(
         <div>
             <header>
@@ -32,6 +46,9 @@ const OneProduct = (props) => {
             <p>{product.price}</p>
             <p>{product.description}</p>
             <img src = {product.image}></img>
+            <button onClick={deleteProduct}>
+                Delete {product.title}
+            </button>
         </div>
     )
 }

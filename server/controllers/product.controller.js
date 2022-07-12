@@ -42,6 +42,7 @@ module.exports = {
         .catch((err)=>{
             console.log("Find One Product Failed");
             res.json({message: "Something went wrong in findOneProduct", error: err})
+            console.log(err);
         })
     },
 

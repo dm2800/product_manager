@@ -52,7 +52,7 @@ a:hover {
   color: lightgray;
 }
 button {
-  background-color: white;
+  background-color: lightblue;
   border: 1px solid black; 
   border-radius: 4px;
   padding: 10px; 
@@ -94,14 +94,15 @@ label {
   margin: auto;
   font-size: 22px;
 }
+
 input,
 select{
   width:150px;
   margin: 10px auto;
   background-color: white;
   border: 1px solid black;
-  border-radius: 20px;
   box-shadow: 3px 3px 6px;
+  height: 30px;
 }
 
 .listItem {
